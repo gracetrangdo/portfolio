@@ -1705,7 +1705,6 @@ font-size:5vw;
   }
 }
 
-
 #loader {
   position: fixed;
   inset: 0;
@@ -1720,4 +1719,41 @@ font-size:5vw;
 #loader.hidden {
   opacity: 0;
   visibility: hidden;
+}
+
+.loader-name {
+  font-family: "louche", sans-serif;
+  font-size: clamp(2rem, 8vw, 5rem);
+  color: #fff5ee;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.3em;
+  padding: 0 6vw;
+  text-align: center;
+}
+
+@keyframes staticIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.loader-static {
+  opacity: 0;
+  animation: staticIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+}
+
+.loader-swap {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loader-swap.visible {
+  opacity: 1;
+}
+
+.loader-swap.fade {
+  opacity: 0;
 }
