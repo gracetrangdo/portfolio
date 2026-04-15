@@ -111,13 +111,12 @@ my unofficial creative directors and favorite chaos-makers :)
 <script src="SplitText.min.js"></script>
 <script src="DrawSVGPlugin.min.js"></script>
 <script src="myscript.js"></script>
-        <script>
+ <script>
   const words = ['already.', 'now.', 'for real.', 'please.', "i'm serious."];
   let i = 0;
   const swap = document.getElementById('loader-swap');
   let interval;
 
-  // Start word swapping after "just hire Grace" animates in
   setTimeout(() => {
     swap.textContent = words[0];
     swap.classList.add('visible');
@@ -134,17 +133,13 @@ my unofficial creative directors and favorite chaos-makers :)
     }, 1500);
   }, 1100);
 
-  // Hide loader after page loads — this is outside the setTimeout
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    setTimeout(() => {
-      clearInterval(interval);
-      loader.classList.add('hidden');
-      setTimeout(() => loader.remove(), 600);
-    }, 4000);
+    clearInterval(interval);
+    loader.classList.add('hidden');
+    setTimeout(() => loader.remove(), 600);
   });
 </script>
-
 
     </body>
 
