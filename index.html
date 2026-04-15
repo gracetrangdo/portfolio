@@ -83,7 +83,6 @@
   const swap = document.getElementById('loader-swap');
   let interval;
 
-  // Start word swapping after "just hire Grace" animates in
   setTimeout(() => {
     swap.textContent = words[0];
     swap.classList.add('visible');
@@ -100,14 +99,11 @@
     }, 1500);
   }, 1100);
 
-  // Hide loader after page loads — this is outside the setTimeout
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    setTimeout(() => {
-      clearInterval(interval);
-      loader.classList.add('hidden');
-      setTimeout(() => loader.remove(), 600);
-    }, 4000);
+    clearInterval(interval);
+    loader.classList.add('hidden');
+    setTimeout(() => loader.remove(), 600);
   });
 </script>
 
