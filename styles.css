@@ -1757,3 +1757,18 @@ font-size:5vw;
 .loader-swap.fade {
   opacity: 0;
 }
+
+
+
+.website-work {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 0 3rem 0;
+}
+
+.website-work p {
+  font-size: 0.85rem;
+  font-family: "sincopa";
+  color: #555555;
+  margin: 0;
+}
