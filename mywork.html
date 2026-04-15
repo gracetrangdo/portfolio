@@ -18,13 +18,15 @@
 
     <body>
       
-      <div id="loader">
-  <div class="loader-blobs">
-    <div class="loader-blob"></div>
-    <div class="loader-blob"></div>
-    <div class="loader-blob"></div>
-  </div>
+<div id="loader">
+  <p class="loader-name">
+    <span class="loader-static" style="animation-delay: 0.1s">just</span>
+    <span class="loader-static" style="animation-delay: 0.4s">hire</span>
+    <span class="loader-static" style="animation-delay: 0.7s">Grace</span>
+    <span class="loader-swap" id="loader-swap"></span>
+  </p>
 </div>
+
 
 <section id="mywork-page">
 
@@ -182,10 +184,36 @@
 <script src="DrawSVGPlugin.min.js"></script>
 <script src="myscript.js"></script>
 <script>
+  const words = ['already.', 'now.', 'for real.', 'please.', "i'm serious."];
+  let i = 0;
+  const swap = document.getElementById('loader-swap');
+  let interval;
+
+  // Start word swapping after "just hire Grace" animates in
+  setTimeout(() => {
+    swap.textContent = words[0];
+    swap.classList.add('visible');
+
+    interval = setInterval(() => {
+      swap.classList.remove('visible');
+      swap.classList.add('fade');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        swap.textContent = words[i];
+        swap.classList.remove('fade');
+        swap.classList.add('visible');
+      }, 300);
+    }, 1500);
+  }, 1100);
+
+  // Hide loader after page loads — this is outside the setTimeout
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
-    loader.classList.add('hidden');
-    setTimeout(() => loader.remove(), 600);
+    setTimeout(() => {
+      clearInterval(interval);
+      loader.classList.add('hidden');
+      setTimeout(() => loader.remove(), 600);
+    }, 4000);
   });
 </script>
 
