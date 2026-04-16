@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grace's Work</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!--JQuery library from Google-->
+        <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
+        
+        <link rel="stylesheet" href="https://use.typekit.net/uag4fiw.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+
+    <body class="landing">
+
+<div id="loader">
+  <p class="loader-name">
+    <span class="loader-static" style="animation-delay: 0.5s">just</span>
+<span class="loader-static" style="animation-delay: 0.8s">hire</span>
+<span class="loader-static" style="animation-delay: 1.1s">Grace</span>
+  </p>
+</div>
+
+<section id="landing-page">
+
+<section class="myname">
+
+
+<h1 class="name"><span class="letter">G</span><span class="letter">r</span><span class="letter">a</span><span class="letter">c</span><span class="letter">e</span><span class="letter">&nbsp;</span><span class="letter">D</span><span class="letter">o</span></h1>
+
+</section>
+
+<nav class="nav-container">
+  <div class="nav-pill">
+    <span class="menu-label">Menu</span>
+    <ul class="nav-links">
+      <li><a href="aboutme.html">About Me</a></li>
+      <li><a href="mywork.html">My Work</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="intro">
+<p class="introduction"><span class="hi">Hiii!</span> I work across design and strategy — mostly in beauty and retail, on everything from packaging and campaigns to events and content.  <br>
+I've never been able to leave something alone until it feels right — which is either dedication or a problem, depending on who you ask.</p>
+</section>
+
+<div id="blob"></div>
+
+
+</section>
+
+<!-- FOOTER SECTION -->
+<section id="footer">
+
+    <div class="contact">
+        <h3>Interested in working together?<br> I'd love to hear from you!</h3>
+        <a href="mailto:gracetrangdo@gmail.com">GET IN TOUCH!</a>
+
+    </div>
+
+    <div class="explore">
+        <h2> Grace Do</h2>
+        <p>Brooklyn, NY<br>
+        <a href="mailto:gracetrangdo@gmail.com">gracetrangdo@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/trang-do-95b282254/">LinkedIn</a>
+        </p>
+
+    </div>
+</section>
+
+<script src="gsap.min.js"></script>
+<script src="SplitText.min.js"></script>
+<script src="myscript.js"></script>
+<script>
+  const words = ['already.', 'now.', 'for real.', 'please.', "i'm serious."];
+  let i = 0;
+  const swap = document.getElementById('loader-swap');
+  let interval;
+
+  setTimeout(() => {
+    swap.textContent = words[0];
+    swap.classList.add('visible');
+
+    interval = setInterval(() => {
+      swap.classList.remove('visible');
+      swap.classList.add('fade');
+      setTimeout(() => {
+        i = (i + 1) % words.length;
+        swap.textContent = words[i];
+        swap.classList.remove('fade');
+        swap.classList.add('visible');
+      }, 300);
+    }, 1500);
+  }, 2100);
+
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    clearInterval(interval);
+    loader.classList.add('hidden');
+    setTimeout(() => loader.remove(), 600);
+  });
+</script>
+
+<script>
+const letters = document.querySelectorAll('.letter');
+const nameEl = document.querySelector('.name');
+
+function startChaos() {
+  letters.forEach((el, i) => {
+    gsap.to(el, {
+      x: gsap.utils.random(-12, 12),
+      y: gsap.utils.random(-16, 8),
+      rotation: gsap.utils.random(-10, 10),
+      duration: gsap.utils.random(2.4, 3.8),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+  });
+}
+
+// initial start with delay
+letters.forEach((el, i) => {
+  gsap.to(el, {
+    x: gsap.utils.random(-12, 12),
+    y: gsap.utils.random(-16, 8),
+    rotation: gsap.utils.random(-10, 10),
+    duration: gsap.utils.random(2.4, 3.8),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+    delay: i * 0.15 + 3
+  });
+});
+
+nameEl.addEventListener("mouseenter", () => {
+  gsap.killTweensOf(letters); // kill all running tweens
+  gsap.to(letters, {
+    x: 0, y: 0, rotation: 0,
+    duration: 0.6,
+    ease: "elastic.out(1, 0.5)"
+  });
+});
+
+nameEl.addEventListener("mouseleave", () => {
+  startChaos();
+});
+</script>
+
+
+
+    </body>
+
+
+</html>
