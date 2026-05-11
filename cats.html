@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>the cats</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!--JQuery library from Google-->
+        <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
+
+        <link rel="stylesheet" href="https://use.typekit.net/uag4fiw.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+<link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+
+    <body>
+
+<section id="about-page">
+
+    <header id="site-header">
+<section class="name-header">
+<a href="index.html" class="rolling-text name-small">Grace Do</a>
+</section>
+
+<nav class="nav-container">
+  <div class="nav-pill">
+    <span class="menu-label">Menu</span>
+    <ul class="nav-links">
+      <li><a href="aboutme.html">About Me</a></li>
+      <li><a href="mywork.html">My Work</a></li>
+      <li><a href="resume.html">Resume</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div class="letswork-pill">
+    <a href="mailto:gracetrangdo@gmail.com" class="letswork-text">Let's Work</a>
+  </div>
+    </header>
+
+<div id="blob"></div>
+
+<div class="cats-page">
+  <p class="cats-title">congrats! you found my cats :)</p>
+
+  <div class="cats-scatter">
+    <img src="images/cats/bean.png"      class="cat-img" data-name="bean"         style="top: 4%;     left: 2%;   width: 29vw; rotate: -6deg;">
+    <img src="images/cats/boba-1.png"    class="cat-img" data-name="boba"         style="top: 10%;    left: 73%;  width: 28vw; z-index: 5;">
+    <img src="images/cats/soba-1.png"    class="cat-img" data-name="soba"         style="top: 34%;    left: 33%;  width: 28vw; rotate: -3deg;">
+    <img src="images/cats/steve-1.png"   class="cat-img" data-name="steve"        style="bottom: 18%; left: 0;    width: 24vw;">
+    <img src="images/cats/stevebean.png" class="cat-img" data-name="steve & bean" style="bottom: 8%; right: 2%;  width: 25vw; rotate: -5deg;">
+  </div>
+</div>
+
+<style>
+  .cats-page {
+    min-height: 140vh;
+    position: relative;
+  }
+
+  .cats-title {
+    font-family: 'sincopa', sans-serif;
+    font-weight: 400;
+    font-size: 4vw;
+    color: #1a0934;
+    animation: colorShift 4s ease-in-out infinite;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .cats-scatter {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .cat-img {
+    position: absolute;
+    cursor: none;
+    pointer-events: auto;
+  }
+
+  #cat-cursor {
+    position: fixed;
+    pointer-events: none;
+    font-family: 'sincopa', sans-serif;
+    font-size: 1.8rem;
+    color: #1a0934;
+    z-index: 9999;
+    display: none;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
+  .cats-page {
+    min-height: 140vh;
+  }
+</style>
+
+</section>
+
+
+<!-- FOOTER SECTION -->
+<section id="footer">
+
+    <div class="contact">
+        <h3>Interested in working together?<br> I'd love to hear from you!</h3>
+        <a href="mailto:gracetrangdo@gmail.com">GET IN TOUCH!</a>
+
+    </div>
+
+    <div class="explore">
+        <h2> Grace Do</h2>
+        <p>Brooklyn, NY<br>
+        <a href="mailto:gracetrangdo@gmail.com">gracetrangdo@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/trang-do-95b282254/">LinkedIn</a>
+        </p>
+
+    </div>
+</section>
+
+<div id="cat-cursor"></div>
+
+<script>
+  const catCursor = document.getElementById('cat-cursor');
+  const catImgs = document.querySelectorAll('.cat-img');
+
+  document.addEventListener('mousemove', (e) => {
+    catCursor.style.left = e.clientX + 'px';
+    catCursor.style.top = e.clientY + 'px';
+  });
+
+  catImgs.forEach(img => {
+    img.addEventListener('mouseenter', () => {
+      catCursor.textContent = img.dataset.name;
+      catCursor.style.display = 'block';
+    });
+    img.addEventListener('mouseleave', () => {
+      catCursor.style.display = 'none';
+    });
+  });
+</script>
+
+<script src="gsap.min.js"></script>
+<script src="SplitText.min.js"></script>
+<script src="DrawSVGPlugin.min.js"></script>
+<script src="myscript.js"></script>
+
+    </body>
+
+</html>
